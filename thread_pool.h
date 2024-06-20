@@ -1,9 +1,9 @@
 /**
- * @file chat_thread_poll.h
+ * @file thread_poll.h
  */
 
-#ifndef _CHAT_SRC_SERVER_CHAT_THREAD_POOL_H_
-#define _CHAT_SRC_SERVER_CHAT_THREAD_POOL_H_
+#ifndef _SRC_SERVER_THREAD_POOL_H_
+#define _SRC_SERVER_THREAD_POOL_H_
 
 #include <pthread.h>
 

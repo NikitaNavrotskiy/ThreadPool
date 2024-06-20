@@ -1,9 +1,9 @@
 /**
- * @file chat_proto.h
+ * @file proto.h
  */
 
-#ifndef _CHAT_SRC_SERVER_CHAT_QUEUE_H_
-#define _CHAT_SRC_SERVER_CHAT_QUEUE_H_
+#ifndef _SRC_SERVER_QUEUE_H_
+#define _SRC_SERVER_QUEUE_H_
 
 #include <stddef.h>
 
@@ -18,7 +18,7 @@ struct dnode_s {
 typedef struct queue_s {
   struct dnode_s * front;
   struct dnode_s * back;
-  size_t           size;
+  size_t                size;
 } queue_t;
 
 

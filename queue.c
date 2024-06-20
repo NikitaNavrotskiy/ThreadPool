@@ -59,8 +59,6 @@ void queue_pop(queue_t *q)
     q->front = NULL;
 
   q->size--;
-
-  free(tmp);
 }
 
 
@@ -91,7 +89,5 @@ void queue_destroy(queue_t *q)
     free(tmp);
     tmp = tmp_next;
   }
-
-  free(q);
 }
 
