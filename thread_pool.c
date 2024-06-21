@@ -12,7 +12,7 @@ static void *thread_pool_routine(void *arg)
   thread_pool_t *thread_pool = (thread_pool_t *)arg;
   thread_task_t *thread_task = NULL;
 
-  while(thread_pool->active)
+  for(;;)
   {
     pthread_mutex_lock(&thread_pool->mutex);
     
@@ -27,12 +27,14 @@ static void *thread_pool_routine(void *arg)
     pthread_mutex_unlock(&thread_pool->mutex);
 
     if(thread_task){
+      if(*(int *)thread_task->arg == 99)
+        thread_pool->active = 0;
       thread_task->task(thread_task->arg);
       thread_task_destroy(thread_task);
     }
 
-    //if(!thread_pool->active)
-    //  break;
+    if(!thread_pool->active)
+      break;
   }
 
   pthread_exit(NULL);
@@ -93,6 +95,7 @@ void thread_pool_destroy(thread_pool_t *thread_pool)
 
   queue_destroy(thread_pool->queue);
   free(thread_pool->pool);
+  free(thread_pool);
 }
 
 
